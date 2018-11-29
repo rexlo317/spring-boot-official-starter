@@ -22,12 +22,12 @@ public class Users {
         this.users = users;
     }
 
-    public void addUser(String id){
-        users.add(new User(id));
+    public void addUser(User id){
+        users.add(id);
     }
 
-    public User getUser(String id){
-        return users.get(users.indexOf(id));
+    public User getUser(User user){
+        return users.get(users.indexOf(user));
     }
 
 }

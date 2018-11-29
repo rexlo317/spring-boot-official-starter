@@ -24,14 +24,15 @@ public class SimpleController {
 
     @GetMapping(path = "/", produces = {"application/json"})
     public ResponseEntity<String> getAll() {
-        users.addUser("ABC");
-        return ResponseEntity.ok("Hello: " + users.getUser("ABC"));
+        User user = new User("AAA");
+        users.addUser(user);
+        return ResponseEntity.ok("Hello: " + users.getUser(user));
     }
 
-    @PostMapping(path = "/users/{userID}", produces = {"application/json"})
-    public ResponseEntity<String> postUser(@PathVariable String userID){
-        users.addUser(userID);
-        return ResponseEntity.created(URI.create("/users/" + userID)).body("Useless");
+    @PostMapping(path = "/users", produces = {"application/json"})
+    public ResponseEntity<String> postUser(@RequestBody User user){
+        users.addUser(user);
+        return ResponseEntity.created(URI.create("/users")).body("Useless");
     }
 
 
